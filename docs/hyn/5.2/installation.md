@@ -3,12 +3,11 @@ title: Installation
 icon: fal fa-arrow-alt-to-bottom
 ---
 
-
 # Elevated database user
 
 Tenancy requires a system connection that allows creating new databases for her
 tenants. In order to do so we need to have a database user with elevated
-permissions.
+privileges.
 
 A user for both [MariaDB or MySQL][1] and [PostgreSQL][2] would require the "GRANT OPTION" to be
 applied. You can either use the root user (for PostgreSQL that is user postgres) or create

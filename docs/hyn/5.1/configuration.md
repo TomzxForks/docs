@@ -4,7 +4,7 @@ icon: fal fa-sliders-v
 ---
 # System connection
 
-Tenancy needs a database connection with elevated permission to create databases
+Tenancy needs a database connection with elevated privileges to create databases
 to be used by its tenants.
 
 Make sure you set up this connection by following the instructions
