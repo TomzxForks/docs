@@ -12,7 +12,7 @@ Laravel offers [package auto discovery](https://medium.com/@taylorotwell/package
 in version 5.5. So that's all you need to do, no need to register any
 service providers manually in your `config/app.php`.
 
-Optionally you can publish the configuration files for tenancy. This allows you to configure
+Optionally you can publish the `tenancy` configuration files. This allows you to configure
 the system database before migrating tables into your tenancy system database, run:
 
 ```bash
@@ -21,7 +21,7 @@ php artisan vendor:publish --tag=tenancy
 
 Then edit `config/tenancy.php` accordingly.
 
-Now enable the tenancy environment by running the installation procedure;
+Now enable the tenancy environment by running the installation procedure:
 
 ```bash
 php artisan tenancy:install
