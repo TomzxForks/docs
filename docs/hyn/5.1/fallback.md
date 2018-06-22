@@ -9,12 +9,12 @@ a landing page or admin area for your clients to configure their tenant website.
 
 # Routing with domain
 
-One of the easiest solutions is using the `::domain()` option in routing called
-[sub domain routing in Laravel](https://laravel.com/docs/5.5/routing#route-group-sub-domain-routing).
+One of the easiest solutions is using the `::domain()` method using the `Route` façade, see
+[sub-domain routing in Laravel](https://laravel.com/docs/5.5/routing#route-group-sub-domain-routing).
 
 ```php
 Route::domain('master.your.app')->group(function () {
-    // .. your landing page routes
+    // ... your landing page routes
 });
 ```
 
@@ -24,13 +24,13 @@ Another quick method is to simply seed a default tenant that has a specific
 hostname. Set the environment `TENANCY_DEFAULT_HOSTNAME` to the exact FQDN used
 for that tenant.
 
-Now every time no other tenant was identified, it will revert to this tenant. A
+Now every time no other tenant is identified, it will revert to this tenant. A
 drawback of this method is the need to set up a tenant website.
 
 # Disabling abort to pass through
 
-Disable in the `tenancy.php` configuration file the `abort-without-identified-hostname` option
-by setting it to `false`. This will prevent tenancy from throwing a 404 (not found) whenever
+In the `tenancy.php` configuration file, disable the `abort-without-identified-hostname` option
+by setting it to `false`. This will prevent `tenancy` from throwing a 404 (not found) whenever
 it failed to identify a tenant.
 
 Depending on how you set up your app, the code will now pass through to any registered routes.
@@ -38,7 +38,7 @@ For applications that have global routes defined for tenant specific functionali
 run into the issue that no "tenant" connection was defined.
 
 An easy solution to this is writing a custom middleware that sets up the tenant database configuration
-for the specific landing page site. Something like the following might already be sufficient;
+for the specific landing page site. Something like the following might already be sufficient:
 
 ```php
 namespace App\Http\Middleware;
@@ -65,8 +65,8 @@ class FallbackHandler
                 'strict' => true,
                 'engine' => null,
             ]);
-        }    
-    
+        }
+
         return $next($request);
     }
 }
