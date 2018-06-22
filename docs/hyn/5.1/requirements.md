@@ -9,21 +9,21 @@ icon: fal fa-clipboard-check
 - Apache 2.4+ or Nginx 1.12+.
 - MySQL 5.7+, MariaDB 10+ or PostgreSQL 9+.
 
-> Please note that MySQL limits username and database length to 32, 
+> Please note that MySQL limits username and database length to 32,
 enable in the `tenancy.php` configuration file:  `website > uuid-limit-length-to-32`
 to fix this.
 
 # Elevated database user
 
-Tenancy requires a system connection that allows creating new databases for her
+Tenancy requires a system connection that allows creating new databases for the
 tenants. In order to do so we need to have a database user with elevated
-permissions.
+privileges.
 
-A user for both [MariaDB or MySQL][1] and [PostgreSQL][2] would require the "GRANT OPTION" to be
-applied. You can either use the root user (for PostgreSQL that is user postgres) or create
+A user for [MariaDB, MySQL][1] or [PostgreSQL][2] would require the "GRANT OPTION".
+You can either use the root user (for PostgreSQL that is user postgres) or create
 your own (recommended):
 
-For MariaDB:
+For MariaDB/MySQL:
 ```sql
 CREATE DATABASE IF NOT EXISTS tenancy;
 CREATE USER IF NOT EXISTS tenancy@localhost IDENTIFIED BY 'someRandomPassword';
@@ -58,7 +58,7 @@ Under connections:
 ```
 
 > There is no need to configure the `tenant` connection in the `database.php`
-configuration file. This connection is set up automatically during runtime. Pre-
+configuration file. This connection is set up automatically at runtime. Pre-
 configuring this connection may cause unwanted behaviour.
 
 [1]: https://mariadb.com/kb/en/library/grant/#the-grant-option-privilege
