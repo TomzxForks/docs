@@ -7,39 +7,39 @@ icon: fal fa-vials
 
 The principle of multi tenancy is about a single instance of software running
 on a server and serving multiple tenants. The interpretation of such a tenancy
-application is quite divers, the possible implementations is even without
+application is quite varied, the possible implementations is even without
 boundary.
 
-Hyn tenancy is focused to provide a drop-in solution for Laravel without
+Hyn tenancy is focused on providing a drop-in solution for Laravel without
 sacrificing flexibility or hacks of the Laravel ecosystem.
 
-This packages holds onto one core belief though; **the tenant is the website**, so;
+This packages holds onto one core belief, **the tenant is the website**, thus:
 
-- A tenant is a website.
-- A website can have zero or more hostnames.
-    - A website is identified when a specific hostname is requested.
-- Customers allow for easier grouping.
-    - Using customers is optional.
-    - A website can belong to a customer.
+- A tenant is a website;
+- A website can have zero or more hostnames;
+    - A website is identified when a specific hostname is requested;
+- Customers allow for easier grouping;
+    - Using customers is optional;
+    - A website can belong to a customer;
     - A hostname can belong to a customer.
 
 # Website
 
 You can think of a website as a single mirror of the code base, re-using your default
-app code. In addition it is also possible to have very [tenant specific logic][directory-structure], 
-for instance routes, a vendor folder, media and language files.
+app code. In addition, it is also possible to have very [tenant specific logic][directory-structure],
+for instance custom routes, a vendor folder, or media and language files.
 
 # Hostname
 
 A hostname is a [Fully Qualified Domain Name][fqdn] (for instance sub.example.com).
 Your application handles incoming requests to specific hostnames. Tenancy inspects
-these requests and [sets up the tenancy environment][identification] according to a 
-matching hostname or default fallback.
+these requests and [sets up the tenancy environment][identification] according to the
+matched hostname or a default fallback.
 
 # Customer
 
-A customer is the binding entity between websites and hostnames. They allow freely
-combining the two. A website and hostname can have a customer, they don't need to be
+A customer is the binding entity between websites and hostnames. They allow combining
+the two freely. A website and hostname can have a customer, they don't need to be
 the same by the way.
 
 > Using customers in your application is optional.
