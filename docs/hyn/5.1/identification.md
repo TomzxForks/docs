@@ -3,26 +3,25 @@ title: Identification
 icon: fal fa-street-view
 ---
 
-During runtime, the `Environment` class is bound into Laravels container. The
-tenancy environment holds one single responsibility, which is telling our code
-what hostname was currently identified and resolving the related website and
-customer.
+At runtime, the `Environment` class is bound into Laravel's container. The
+tenancy environment holds one single responsibility, which is telling the code
+what hostname was identified and resolving the related website and customer.
 
 # Early identification
 
-By default tenancy will identify the tenant after all Middleware has been processed.
-Previously when could simply resolve the Environment class through the container
+By default tenancy will identify the tenant after all middlewares have been processed.
+Previously, we could simply resolve the `Environment` class through the container
 to force identification of the tenant early on. If you want the package to handle
-this on your behalf you can now simply enable the `early-identification` flag in
- your `tenancy.php` configuration file under `hostname`.
+this on your behalf you can simply enable the `early-identification` flag in
+the `tenancy.php` configuration file under `hostname`.
 
-# Manual identification
+# Custom identification
 
 The environment can be used to manually set any active tenant. This is one of the
 reasons why the tenancy configuration file has the `hostname > auto-identification`
 setting. Turn it off to implement your own tenancy identification.
 
-Manual identification is pretty straightforward. Take for example the following
+Custom identification is pretty straightforward. Take for example the following
 snippet for a custom (app) service provider:
 
 ```php
@@ -37,5 +36,5 @@ public function boot()
 }
 ```
 
-> Be wary about switching tenants. I recommend switching only once during code
-execution. Use a background job to run mass changes on tenant databases.
+> Be wary about switching tenants. It is recommended to switch only once during code
+execution. Use a queued job to run mass changes on tenant databases.
